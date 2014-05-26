@@ -1,0 +1,17 @@
+{
+  "name": "elastic-importer",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "run": "node src/app.js"
+  },
+  "author": "Leonel Samayoa (leonel.e.samayoa@gmail.com)",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.2.0",
+    "elasticsearch": "^2.2.0",
+    "moment": "^2.6.0",
+    "mysql": "^2.3.0"
+  }
+}
