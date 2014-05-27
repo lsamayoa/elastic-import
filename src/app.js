@@ -14,11 +14,13 @@ program
   .option('-t, --type [type]', 'Elasticsearch Type')
   .option('-i, --index [index]', 'Index name')
   .option('-b, --batchSize [batchSize]', 'Batchsize')
+  .option('-s, --sync', 'Wait IO Mysql/Elasticsearch')
   .parse(process.argv);
 console.log(program.index)
 var sqlQuery  = program.query,
   esIndexName = program.index,
   batchSize   = program.batchSize || 500,
+  syncLoad    = program.sync,
   esType      = program.type;
 console.log('\nQuery: ' + sqlQuery + 
             '\nIndex: '+ esIndexName +
@@ -32,8 +34,15 @@ try {
   var bulkQuery = [];
   var count = 0;
   var executeBatch = function(){
+    if(syncLoad){
+      conn.pause();
+    }
     esClient.bulk({
       body: bulkQuery
+    }).then(function(){
+      if(syncLoad){
+        conn.resume();
+      }
     });
     bulkQuery = [];
   };
