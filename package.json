@@ -8,7 +8,11 @@
   "dependencies": {
     "commander": "^2.2.0",
     "elasticsearch": "^2.2.0",
+    "event-stream": "^3.1.5",
+    "liftoff": "^0.10.0",
     "moment": "^2.6.0",
-    "mysql": "^2.3.0"
+    "mysql": "^2.3.0",
+    "stream-reduce": "^1.0.3",
+    "when": "^3.2.2"
   }
 }
