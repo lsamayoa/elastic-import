@@ -12,6 +12,7 @@
     "liftoff": "^0.10.0",
     "moment": "^2.6.0",
     "mysql": "^2.3.0",
+    "speedometer": "^0.1.2",
     "stream-reduce": "^1.0.3",
     "when": "^3.2.2"
   }

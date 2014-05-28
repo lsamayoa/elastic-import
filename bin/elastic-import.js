@@ -29,7 +29,7 @@ ElasticImport.launch(function(env){
 
   var importer = new ElasticImporter(config.mysql, config.elasticsearch);
   var importStream = importer.doImport(program);
-  importStream.pipe(es.stringify()).pipe(process.stdout);
+  // importStream.pipe(es.stringify()).pipe(process.stdout);
   importStream.on('end', importer.close);
 
 }, process.argv);
