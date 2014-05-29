@@ -1,19 +1,25 @@
 {
-  "name": "elastic-importer",
-  "version": "0.0.1",
-  "description": "",
-  "main": "src/app.js",
-  "author": "Leonel Samayoa (leonel.e.samayoa@gmail.com)",
-  "license": "MIT",
+  "name"        : "elastic-importer",
+  "version"     : "0.0.1",
+  "description" : "",
+  "main"        : "src/app.js",
+  "author"      : "Leonel Samayoa (leonel.e.samayoa@gmail.com)",
+  "license"     : "MIT",
+  "bin"         : {
+    "elastic-importer" : "./bin/elastic-importer.js"
+  },
+  "engines" : {
+    "node" : ">=0.10.0"
+  },
   "dependencies": {
-    "commander": "^2.2.0",
-    "elasticsearch": "^2.2.0",
-    "event-stream": "^3.1.5",
-    "liftoff": "^0.10.0",
-    "moment": "^2.6.0",
-    "mysql": "^2.3.0",
-    "speedometer": "^0.1.2",
-    "stream-reduce": "^1.0.3",
-    "when": "^3.2.2"
+    "commander"     : "^2.2.0",
+    "elasticsearch" : "^2.2.0",
+    "event-stream"  : "^3.1.5",
+    "liftoff"       : "^0.10.0",
+    "moment"        : "^2.6.0",
+    "mysql"         : "^2.3.0",
+    "speedometer"   : "^0.1.2",
+    "stream-reduce" : "^1.0.3",
+    "when"          : "^3.2.2"
   }
 }

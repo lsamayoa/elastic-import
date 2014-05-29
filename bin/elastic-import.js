@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var es = require('event-stream');
 var Liftoff         = require('liftoff');
 var program         = require('commander');
 var ElasticImporter = require('../lib/elastic-importer');
+var speedometer     = require('speedometer');
 
 var ElasticImport   = new Liftoff({
   name           : 'elastic-import',
@@ -29,7 +29,19 @@ ElasticImport.launch(function(env){
 
   var importer = new ElasticImporter(config.mysql, config.elasticsearch);
   var importStream = importer.doImport(program);
-  // importStream.pipe(es.stringify()).pipe(process.stdout);
   importStream.on('end', importer.close);
-
+  var total = 0;
+  var start = new Date().getTime();
+  var speed = speedometer();
+  importStream.on('data', function(data){
+    var docs = data.items.length;
+    var recordsPerSecond = speed(docs);
+    total += docs;
+    //console.log('\033[2J');
+    console.log('Importing Records: ~' + recordsPerSecond +' records/s');
+  });
+  importStream.on('end', function(){
+    var end = new Date().getTime();
+    console.log('Imported ' + total + ' records. @~'+ (total / ((end-start)/1000) )+'records/s :) Happy Coding!')
+  });
 }, process.argv);
